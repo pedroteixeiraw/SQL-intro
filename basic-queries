@@ -1,0 +1,19 @@
+SELECT * -- * = all columns 
+FROM students;
+
+-- SELECT = get informantion
+
+/*
+-- Order by name
+SELECT name, major
+FROM students
+ORDER BY name;
+*/
+
+SELECT *
+FROM students
+ORDER BY student_id DESC;
+
+SELECT *
+FROM students
+ORDER BY name, major DESC;
