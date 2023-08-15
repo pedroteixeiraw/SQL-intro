@@ -45,3 +45,16 @@ ALTER TABLE student ADD gpa DECIMAL(3, 2);
 ```
 
 With this command we just added a new column 'gpa', with the data type 'DECIMAL(3,2)', this new column will have three digits, with two of the digits occuring after the decimal point.
+
+
+Now that we have our table set up, we want to actually start inputting information. To input information we use the comand `INSERT`.
+
+```sql
+INSERT INTO student VALUES(1, 'Jack', 'Biology', 3.4);
+```
+
+To grad all the information from the student table we do:
+
+```sql
+SELECT * FROM student;
+```
