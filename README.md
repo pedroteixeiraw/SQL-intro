@@ -26,7 +26,7 @@ Or we can indicate the primary key at the end.
 ```sql
 CREATE TABLE student (
     student_id INT,
-    name CARCHAR(20),
+    name VARCHAR(20),
     PRIMARY KEY (student_id)
 )
 ```
