@@ -29,5 +29,4 @@ CREATE TABLE student (
     name CARCHAR(20),
     PRIMARY KEY (student_id)
 )
-*/
 ```
