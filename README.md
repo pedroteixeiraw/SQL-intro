@@ -37,3 +37,11 @@ You can use the comand `DESCRIBE (table name)` , it will drescribe the 'Filed', 
 DESCRIBE student;
 DROP TABLE student;
 ```
+
+To alter a table, we can do this:
+
+```sql
+ALTER TABLE student ADD gpa DECIMAL(3, 2);
+```
+
+With this command we just added a new column 'gpa', with the data type 'DECIMAL(3,2)'. This new column will have three digits, with two of the digits occuring after the decimal point.
