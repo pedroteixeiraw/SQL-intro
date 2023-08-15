@@ -44,4 +44,4 @@ To alter a table, we can do this:
 ALTER TABLE student ADD gpa DECIMAL(3, 2);
 ```
 
-With this command we just added a new column 'gpa', with the data type 'DECIMAL(3,2)'. This new column will have three digits, with two of the digits occuring after the decimal point.
+With this command we just added a new column 'gpa', with the data type 'DECIMAL(3,2)', this new column will have three digits, with two of the digits occuring after the decimal point.
