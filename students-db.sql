@@ -15,13 +15,14 @@ CREATE TABLE student (
     PRIMARY KEY (student_id)    
 );
 
-/* Auto increment student_id */
+/* Auto increment student_id
 CREATE TABLE student (
     student_id INT AUTO_INCREMENT,
     name VARCHAR(20),
     major VARCHAR(20),
     PRIMARY KEY (student_id)    
 );
+*/
 
 /* Drop all table */
 DROP TABLE student;
@@ -96,3 +97,68 @@ other comparision ops:
 >=  :greater than or equal
 <=  :less than or equal
 */
+
+
+/* Basic Queries */
+SELECT *        -- '*' all coloumns in the table
+FROM student;
+
+SELECT name
+FROM student;
+
+SELECT name, major
+FROM student;
+
+SELECT student.name, student.major
+FROM student;
+
+/* Order the information we get back */
+SELECT student.name, student.major
+FROM student
+ORDER BY name DESC; -- 'DESC' descending order
+
+SELECT *
+FROM student
+ORDER BY student_id ASC; -- 'ASC' ascending order
+
+SELECT *
+FROM student
+ORDER BY major, student_id DESC;
+
+SELECT *
+FROM student
+LIMIT 2;
+
+SELECT *
+FROM student
+ORDER BY student_id DESC
+LIMIT 2;
+
+
+/* Filtering */
+SELECT *
+FROM student
+WHERE major = 'Chemistry';
+
+SELECT name, major
+FROM student
+WHERE major = 'Chemistry' OR major = 'Biology';
+
+-- <, >, <=, >=, =, <>, AND, OR
+-- <> is not equal
+
+SELECT name, major
+FROM student
+WHERE major <> 'Chemistry';
+
+SELECT *
+FROM student
+WHERE student_id <= 3 AND name <> 'Jack';
+
+SELECT *
+FROM student
+WHERE name IN ('Claire', 'Kate', 'Mike');
+
+SELECT *
+FROM student
+WHERE name IN ('Claire', 'Kate', 'Mike') AND student_id > 2;
