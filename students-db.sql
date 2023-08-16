@@ -45,3 +45,54 @@ INSERT INTO student(student_id, name) VALUES(3, 'Claire');  -- major not include
 /* Inserting data into the table w/ AUTO INCREMENT */
 INSERT INTO student(name, major) VALUES('Jack', 'Biology');
 INSERT INTO student(name, major) VALUES('Kate', 'Sociology');
+
+INSERT INTO student VALUES(1, 'Jack', 'Biology');
+INSERT INTO student VALUES(2, 'Kate', 'Sociology');
+INSERT INTO student VALUES(3, 'Claire', 'Chemistry');
+INSERT INTO student VALUES(4, 'Jack', 'Biology');
+INSERT INTO student VALUES(5, 'Mike', 'Computer Science');
+
+/* Update rows*/
+UPDATE student
+SET major = 'Bio'
+WHERE major = 'Biology';
+
+UPDATE student
+SET major = 'Comp Sci'
+WHERE major = 'Computer Science';
+
+UPDATE student
+SET major = 'Comp Sci'
+WHERE student_id = 4;
+
+UPDATE student
+SET major = 'BioChemistry'
+WHERE major = 'Bio' OR major = 'Chemistry';
+
+UPDATE student
+SET name = 'Tom', major = 'undecided'
+WHERE student_id = 1;
+
+UPDATE student
+SET major = 'undecided';
+
+/* Delete rows */
+DELETE FROM student;
+
+DELETE FROM student
+WHERE student_id = 5;
+
+DELETE FROM student
+WHERE name = 'Tom' AND major = 'undecided';
+
+SELECT * FROM student;
+
+/*
+other comparision ops:
+=   :equals
+<>  :not equals
+>   :greater than
+<   :less than
+>=  :greater than or equal
+<=  :less than or equal
+*/
