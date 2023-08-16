@@ -32,10 +32,15 @@ CREATE TABLE student (
 )
 ```
 
-You can use the comand `DESCRIBE (table name)` , it will drescribe the 'Filed', 'Types', 'Null', 'Key', 'Default', 'Extra' of your database table. But you can also delete your database table with the comand `DROP TABLE (table name)`.
+You can use the comand `DESCRIBE (table name)` , it will drescribe the 'Filed', 'Types', 'Null', 'Key', 'Default', 'Extra' of your database table.
 
 ```sql
 DESCRIBE student;
+```
+
+But you can also delete your database table with the comand `DROP TABLE (table name)`.
+
+```sql
 DROP TABLE student;
 ```
 
