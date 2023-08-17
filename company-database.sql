@@ -100,7 +100,7 @@ INSERT INTO branch_supplier VALUES(3, 'Patriot Paper', 'Paper');
 INSERT INTO branch_supplier VALUES(2, 'J.T. Forms & Labels', 'Custom Forms');
 INSERT INTO branch_supplier VALUES(3, 'Uni-ball', 'Writing Utensils');
 INSERT INTO branch_supplier VALUES(3, 'Hammer Mill', 'Paper');
-INSERT INTO branch_supplier VALUES(3, 'Stamford Lables', 'Custom Forms');
+INSERT INTO branch_supplier VALUES(3, 'Stamford Labels', 'Custom Forms');
 
 -- client
 INSERT INTO client VALUES(400, 'Dunmore Highschool', 2);
@@ -214,3 +214,58 @@ GROUP BY emp_id ASC;
 SELECT client_id, SUM(total_sales)
 FROM works_with
 GROUP BY client_id;
+
+/* Wildcards */
+-- Way of defining different patterns to match specific pieces of data.
+-- % = any number of characters
+-- _ = one character
+
+-- Find any client's who are an LLC
+SELECT *
+FROM client
+WHERE client_name LIKE '%LLC';
+
+-- Find any branch suppliers who are in the label business
+SELECT *
+FROM branch_supplier
+WHERE supplier_name LIKE '%Label%'; 
+
+-- Find any employee born in October
+SELECT *
+FROM employee
+WHERE birth_day LIKE '____-10%';
+
+-- Find any clients who are schools
+SELECT *
+FROM client
+WHERE client_name LIKE '%school%'; 
+
+/* UNION */
+-- Combine all 'SELECT's into the same result
+-- Find a list of employee and branch names
+SELECT first_name
+FROM employee
+UNION
+SELECT branch_name
+FROM branch;
+
+-- Find a list of all clients and brach supplier's names
+SELECT client_name
+FROM client
+UNION
+SELECT supplier_name
+FROM branch_supplier;
+
+-- Find a list of all clients, brach supplier's names and theirs branch_id
+SELECT client_name, client.branch_id
+FROM client
+UNION
+SELECT supplier_name, branch_supplier.branch_id
+FROM branch_supplier;
+
+-- Find a list of all money spent or earned by the company
+SELECT salary
+FROM employee
+UNION
+SELECT total_sales
+FROM works_with;
