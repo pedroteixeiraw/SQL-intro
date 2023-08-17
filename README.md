@@ -44,10 +44,18 @@ But you can also delete your database table with the comand `DROP TABLE (table n
 DROP TABLE student;
 ```
 
-To alter a table, we can do this:
+To add a column to the table, we can do this:
 
 ```sql
-ALTER TABLE student ADD gpa DECIMAL(3, 2);
+ALTER TABLE student
+ADD gpa DECIMAL(3, 2);
+```
+
+To delete a column from the table, we can do this:
+
+```sql
+ALTER TABLE student
+DROP COLUMN gpa;
 ```
 
 With this command we just added a new column 'gpa', with the data type 'DECIMAL(3,2)', this new column will have three digits, with two of the digits occuring after the decimal point.
