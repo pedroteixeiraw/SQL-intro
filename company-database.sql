@@ -142,3 +142,75 @@ FROM client;
 -- Find all work_with
 SELECT *
 FROM works_with;
+
+-- Finf all employees ordered by salary
+SELECT *
+FROM employee
+ORDER BY salary DESC;
+
+-- Find all employees ordered by sex then name
+SELECT *
+FROM employee
+ORDER BY sex, first_name, last_name;
+
+-- Find the first 5 employees in the table
+SELECT *
+FROM employee
+LIMIT 5;
+
+-- Find the first and last names of all employee
+SELECT first_name, last_name
+FROM employee;
+
+-- Find the forename and surnames of all employees
+SELECT first_name AS forname, last_name AS surname
+FROM employee;  
+
+-- Find all the different genders
+SELECT DISTINCT sex -- DISTINCT selects the different values inside a column
+FROM employee;
+
+SELECT DISTINCT branch_id
+FROM employee;
+
+/* Functions */
+-- Find the number of employee
+SELECT COUNT(emp_id)
+FROM employee;
+
+-- Find how many emplyee have supervisors
+SELECT COUNT(super_id)
+FROM employee;
+
+-- Find the number of female emplyees born after 1970
+SELECT COUNT(sex)
+FROM employee
+WHERE sex = 'F' AND birth_day > '1970-12-31';
+
+SELECT *
+FROM employee
+WHERE sex = 'F'  AND birth_day > '1970-12-31';
+
+-- Find the average of all employee's salaries
+SELECT AVG(salary)
+FROM employee;
+
+-- Find the sum of all employee's salaries
+SELECT SUM(salary)
+FROM employee;
+
+-- AGGREGATION
+-- Find out how many males and females there are
+SELECT sex, COUNT(sex) AS Count
+FROM employee
+GROUP BY sex;
+
+-- Find the total sales of each salesman
+SELECT emp_id, SUM(total_sales)
+FROM works_with
+GROUP BY emp_id ASC;
+
+-- Find how much money each client spent with the branch
+SELECT client_id, SUM(total_sales)
+FROM works_with
+GROUP BY client_id;
