@@ -10,6 +10,7 @@ CREATE TABLE employee (
    super_id INT,
    branch_id INT
 );
+
 DESCRIBE employee;
 
 CREATE TABLE branch (
@@ -19,6 +20,7 @@ CREATE TABLE branch (
     mgr_start_date DATE,
     FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL -- to be explained later!
 );
+
 DESCRIBE branch;
 
 /* Define FOREIGN KEY's in employee table */
@@ -36,6 +38,7 @@ CREATE TABLE client (
     branch_id INT,
     FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE SET NULL
 );
+
 DESCRIBE client;
 
 /* Here we have a Composite Primary Key ('emp_id' + 'client_id') */
@@ -48,6 +51,7 @@ CREATE TABLE works_with (
     FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE,
     FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE 
 );
+
 DESCRIBE works_with;
 
 /* 'branch_id' + 'supplier_name' are the Composite Primary Key */
@@ -59,4 +63,24 @@ CREATE TABLE branch_supplier (
     PRIMARY KEY(branch_id, supplier_name),
     FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE CASCADE
 );
+
 DESCRIBE branch_supplier;
+
+/* INSERTING information */
+-- Corporate Branch
+INSERT INTO employee VALUES(100, 'David', 'Wallace', '1967-11-17', 'M', 250000, NULL, NULL);
+INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');
+UPDATE employee
+SET branch_id = 1
+WHERE emp_id = 100;
+INSERT INTO employee VALUES(101, 'Jan', 'Levinson', '1961-05-11', 'F', 110000, 100, 1);
+INSERT INTO employee VALUES(102, 'Michael', 'Scott', '1964-03-15', 'M', 75000, 100, NULL);
+INSERT INTO branch VALUES(2, 'Scranton', 102, '1992-04-06');
+UPDATE employee
+SET branch_id = 2
+WHERE emp_id = 102;
+
+-- Scranton Branch
+INSERT INTO employee VALUES(103, 'Angela', 'Martin', '1971-06-25', 'F', 63000, 102, 2);
+INSERT INTO employee VALUES(104, 'Kelly', 'Kapoor', '1980-02-05', 'F', 55000, 102, 2);
+INSERT INTO employee VALUES(105, 'Stanley', 'Hudson', '1958-02-19', 'M', 69000, 102, 2);
