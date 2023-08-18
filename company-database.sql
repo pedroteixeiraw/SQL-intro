@@ -122,6 +122,8 @@ INSERT INTO works_with VALUES(107, 405, 26000);
 INSERT INTO works_with VALUES(102, 406, 15000);
 INSERT INTO works_with VALUES(105, 406, 130000);
 
+
+
 -- Basic Queries
 -- Find all employees
 SELECT *
@@ -269,3 +271,27 @@ FROM employee
 UNION
 SELECT total_sales
 FROM works_with;
+
+INSERT INTO branch VALUES(4, 'Bufalo', NULL, NULL);
+SELECT * 
+FROM branch; 
+
+/* JOIN */
+-- Used to combine rows from two or more tables based on a related column between them.
+-- Find all branches and the name of their managers
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+JOIN branch
+ON employee.emp_id = branch.mgr_id; 
+
+/* LEFT JOIN */
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+LEFT JOIN branch
+ON employee.emp_id = branch.mgr_id; 
+
+/* RIGHT JOIN */
+SELECT branch.branch_id, employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+RIGHT JOIN branch
+ON employee.emp_id = branch.mgr_id; 
