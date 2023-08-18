@@ -295,3 +295,39 @@ SELECT branch.branch_id, employee.emp_id, employee.first_name, branch.branch_nam
 FROM employee
 RIGHT JOIN branch
 ON employee.emp_id = branch.mgr_id; 
+
+/* Nested Queries */
+-- Find names of all employees who have 
+-- sold over 30000 to a single client
+SELECT employee.first_name, employee.last_name
+FROM employee
+WHERE employee.emp_id IN(
+    SELECT works_with.emp_id
+    FROM works_with
+    WHERE total_sales > 30000
+);
+
+-- Find all clients who are handled by the branch
+-- that Micheal Scott manages
+-- Assume you know Micheal's ID
+SELECT client.client_name
+FROM client
+WHERE client.branch_id = (
+    SELECT branch.branch_id
+    FROM branch
+    WHERE branch.mgr_id = 102 
+    
+);
+
+/* DELETE (row!) */
+-- Delete entries in the database when they have foreign keys associated
+-- ON DELETE SET NULL (Delete a row, put to null the other related row.)
+-- ON DELETE CASCADE  (Delete a row, delete the other related row.)
+
+DELETE FROM employee
+WHERE employee.emp_id = 102;
+
+DELETE FROM branch
+WHERE branch.branch_id = 2;
+
+SELECT * FROM employee;
